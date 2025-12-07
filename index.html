@@ -37,18 +37,17 @@
         </p>
       </section>
 
-      <!-- Now Playing / video player -->
-      <section class="section now-playing">
+      <!-- Now Playing / video player (HIDDEN BY DEFAULT) -->
+      <section class="section now-playing is-hidden">
         <div class="section-header">
           <h2>Now Playing</h2>
         </div>
 
         <div class="player-shell">
           <div class="player-video">
-            <!-- For now we load a default video; JS will replace this on click -->
+            <!-- Player starts empty; JS will set src when a video is clicked -->
             <iframe
               id="linvo-player"
-              src="https://www.youtube.com/embed/jn7dKI3FBc4?rel=0&modestbranding=1"
               title="LINVO Player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -56,8 +55,8 @@
             ></iframe>
           </div>
           <div class="player-meta">
-            <h3 id="player-title">Easy Science Experiments</h3>
-            <p id="player-channel">TED-Ed • Science</p>
+            <h3 id="player-title">Select a video to start watching</h3>
+            <p id="player-channel"></p>
           </div>
         </div>
       </section>
