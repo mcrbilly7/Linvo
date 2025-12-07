@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="kid">
 <head>
   <meta charset="UTF-8" />
   <title>LINVO – Safer Watching for Kids</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-page="kid">
   <div id="app">
     <!-- Top navigation bar -->
     <header class="top-bar">
@@ -22,8 +22,8 @@
         />
       </div>
 
-      <button class="profile-chip" aria-label="Child profile">
-        <span class="profile-avatar">A</span>
+      <button class="profile-chip" aria-label="Child profile" id="kid-profile-chip">
+        <span class="profile-avatar" id="kid-avatar">A</span>
       </button>
     </header>
 
@@ -31,7 +31,9 @@
     <main class="main">
       <!-- Greeting / hero area -->
       <section class="hero">
-        <h1 class="hero-title">Hi, Alex <span class="wave">👋</span></h1>
+        <h1 class="hero-title">
+          Hi, <span id="kid-name">Alex</span> <span class="wave">👋</span>
+        </h1>
         <p class="hero-subtitle">
           Choose a channel or a video to start watching.
         </p>
@@ -61,7 +63,7 @@
         </div>
       </section>
 
-      <!-- Your Channels row -->
+      <!-- Your Channels row (will be overridden by JS if parents add channels) -->
       <section class="section">
         <div class="section-header">
           <h2>Your Channels</h2>
@@ -70,7 +72,7 @@
           </button>
         </div>
 
-        <div class="channel-row">
+        <div class="channel-row" id="kid-channels-row">
           <article class="channel-card">
             <div class="channel-icon channel-icon--ted">TED</div>
             <div class="channel-name">TED-Ed</div>
@@ -104,7 +106,8 @@
           <h2>Videos You May Like</h2>
         </div>
 
-        <div class="video-row">
+        <div class="video-row" id="suggested-videos-row">
+          <!-- Will be replaced by JS if parent has approved channels/videos -->
           <article
             class="video-card"
             data-video-id="jn7dKI3FBc4"
@@ -165,7 +168,8 @@
           <h2>Recently Watched</h2>
         </div>
 
-        <div class="video-row">
+        <div class="video-row" id="recently-watched-row">
+          <!-- Will be driven by LocalStorage; fallback samples: -->
           <article
             class="video-card"
             data-video-id="3P1CnWI62Ik"
@@ -221,7 +225,32 @@
       </section>
     </main>
 
+    <!-- Parent PIN overlay (hidden by default) -->
+    <div class="pin-overlay pin-hidden" aria-hidden="true">
+      <div class="pin-backdrop"></div>
+      <div class="pin-dialog" role="dialog" aria-modal="true" aria-labelledby="pin-title">
+        <h2 id="pin-title">Parent Access</h2>
+        <p class="pin-subtitle">Enter your 4-digit PIN to open the parent dashboard.</p>
+
+        <input
+          type="password"
+          inputmode="numeric"
+          maxlength="4"
+          class="pin-input"
+          placeholder="••••"
+          aria-label="4-digit PIN"
+        />
+
+        <div class="pin-actions">
+          <button type="button" class="pin-btn pin-btn-cancel">Cancel</button>
+          <button type="button" class="pin-btn pin-btn-confirm">Unlock</button>
+        </div>
+
+        <p class="pin-error" aria-live="polite"></p>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </div>
 </body>
-</html>
+            </html>
