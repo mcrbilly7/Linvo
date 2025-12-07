@@ -8,15 +8,153 @@
 </head>
 <body>
   <div id="app">
+    <!-- Top navigation bar -->
     <header class="top-bar">
       <div class="logo">LINVO</div>
-      <div class="search-placeholder">Search (coming soon)</div>
-      <div class="profile-placeholder"></div>
+
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          placeholder="Search (coming soon)"
+          aria-label="Search"
+          disabled
+        />
+      </div>
+
+      <button class="profile-chip" aria-label="Child profile">
+        <span class="profile-avatar">A</span>
+      </button>
     </header>
 
-    <main class="content">
-      <h1>Hi, Alex 👋</h1>
-      <p>This is the LINVO placeholder page. We’ll replace this with the real design next.</p>
+    <!-- Main kid home screen -->
+    <main class="main">
+      <!-- Greeting / hero area -->
+      <section class="hero">
+        <h1 class="hero-title">Hi, Alex <span class="wave">👋</span></h1>
+        <p class="hero-subtitle">
+          Choose a channel or a video to start watching.
+        </p>
+      </section>
+
+      <!-- Your Channels row -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Your Channels</h2>
+          <button class="section-link" type="button" disabled>
+            All channels
+          </button>
+        </div>
+
+        <div class="channel-row">
+          <article class="channel-card">
+            <div class="channel-icon channel-icon--ted">TED</div>
+            <div class="channel-name">TED-Ed</div>
+          </article>
+
+          <article class="channel-card">
+            <div class="channel-icon channel-icon--ryan">RW</div>
+            <div class="channel-name">Ryan’s World</div>
+          </article>
+
+          <article class="channel-card">
+            <div class="channel-icon channel-icon--crash">CC</div>
+            <div class="channel-name">CrashCourse</div>
+          </article>
+
+          <article class="channel-card">
+            <div class="channel-icon channel-icon--pbs">PBS</div>
+            <div class="channel-name">PBS Kids</div>
+          </article>
+
+          <article class="channel-card">
+            <div class="channel-icon channel-icon--art">AFH</div>
+            <div class="channel-name">Art for Kids Hub</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- “Videos You May Like” row -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Videos You May Like</h2>
+        </div>
+
+        <div class="video-row">
+          <article class="video-card">
+            <div class="video-thumb video-thumb--science">
+              <span class="video-duration">8:55</span>
+            </div>
+            <h3 class="video-title">Easy Science Experiments</h3>
+            <p class="video-meta">TED-Ed • Science</p>
+          </article>
+
+          <article class="video-card">
+            <div class="video-thumb video-thumb--robots">
+              <span class="video-duration">6:18</span>
+            </div>
+            <h3 class="video-title">A Story About Robots</h3>
+            <p class="video-meta">CrashCourse Kids</p>
+          </article>
+
+          <article class="video-card">
+            <div class="video-thumb video-thumb--painting">
+              <span class="video-duration">13:24</span>
+            </div>
+            <h3 class="video-title">Painting Colorful Flowers</h3>
+            <p class="video-meta">Art for Kids Hub</p>
+          </article>
+
+          <article class="video-card">
+            <div class="video-thumb video-thumb--abc">
+              <span class="video-duration">14:05</span>
+            </div>
+            <h3 class="video-title">Let’s Learn the Alphabet</h3>
+            <p class="video-meta">PBS Kids</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Recently Watched row -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Recently Watched</h2>
+        </div>
+
+        <div class="video-row">
+          <article class="video-card">
+            <div class="video-thumb video-thumb--space">
+              <span class="video-duration">9:42</span>
+            </div>
+            <h3 class="video-title">Journey Through Space</h3>
+            <p class="video-meta">CrashCourse Kids</p>
+          </article>
+
+          <article class="video-card">
+            <div class="video-thumb video-thumb--baking">
+              <span class="video-duration">7:03</span>
+            </div>
+            <h3 class="video-title">Baking Rainbow Cupcakes</h3>
+            <p class="video-meta">Kids Can Cook</p>
+          </article>
+
+          <article class="video-card">
+            <div class="video-thumb video-thumb--animals">
+              <span class="video-duration">5:11</span>
+            </div>
+            <h3 class="video-title">Amazing Animals</h3>
+            <p class="video-meta">National Geo Kids</p>
+          </article>
+
+          <article class="video-card">
+            <div class="video-thumb video-thumb--crafts">
+              <span class="video-duration">10:26</span>
+            </div>
+            <h3 class="video-title">DIY Cardboard City</h3>
+            <p class="video-meta">Crafty Creations</p>
+          </article>
+        </div>
+      </section>
     </main>
 
     <script src="script.js"></script>
