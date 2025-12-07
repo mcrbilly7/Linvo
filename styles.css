@@ -151,6 +151,9 @@ body {
   margin-bottom: 32px;
 }
 
+.now-playing.is-hidden {
+  display: none;
+}
 .player-shell {
   display: grid;
   grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
