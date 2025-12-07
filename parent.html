@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-page="parent">
+<head>
+  <meta charset="UTF-8" />
+  <title>LINVO – Parent Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="parent">
+  <div id="app">
+    <header class="top-bar">
+      <div class="logo">LINVO</div>
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          placeholder="Search kids or channels (coming soon)"
+          aria-label="Search"
+          disabled
+        />
+      </div>
+      <button class="profile-chip" aria-label="Parent profile">
+        <span class="profile-avatar">P</span>
+      </button>
+    </header>
+
+    <main class="main">
+      <section class="hero">
+        <h1 class="hero-title">Parent Dashboard</h1>
+        <p class="hero-subtitle">
+          Manage kids, approved channels, and screen time. Only videos from channels you approve will appear in LINVO.
+        </p>
+      </section>
+
+      <!-- Kids section -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Kids</h2>
+          <button class="section-link clickable" type="button" id="add-kid-btn">
+            Add kid
+          </button>
+        </div>
+
+        <div class="video-row" id="parent-kids-list">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- Approved channels section -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Approved Channels</h2>
+          <button class="section-link clickable" type="button" id="add-channel-btn">
+            Add channel
+          </button>
+        </div>
+
+        <div class="channel-row" id="parent-channels-list">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- Settings section (time limits / downtime structure ready) -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Screen Time Settings</h2>
+        </div>
+
+        <div class="settings-grid">
+          <div class="settings-card">
+            <h3 class="settings-title">Daily time limit</h3>
+            <p class="settings-subtitle">
+              Set a maximum number of minutes per day for LINVO.
+            </p>
+            <div class="settings-field">
+              <input
+                type="number"
+                min="0"
+                id="daily-limit-input"
+                placeholder="e.g. 60"
+              />
+              <span class="settings-addon">minutes</span>
+            </div>
+          </div>
+
+          <div class="settings-card">
+            <h3 class="settings-title">Downtime</h3>
+            <p class="settings-subtitle">
+              Choose hours when LINVO is paused (like bedtime).
+            </p>
+            <div class="settings-field settings-field-inline">
+              <label>
+                From
+                <input type="time" id="downtime-start-input" />
+              </label>
+              <label>
+                To
+                <input type="time" id="downtime-end-input" />
+              </label>
+            </div>
+          </div>
+        </div>
+        <p class="settings-note">
+          These settings are saved on this device for now. In a future version, we can sync them across devices with a secure account.
+        </p>
+      </section>
+    </main>
+
+    <!-- Add kid modal -->
+    <div class="modal-overlay modal-hidden" id="add-kid-modal" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="add-kid-title">
+        <h2 id="add-kid-title">Add kid</h2>
+        <p class="modal-subtitle">Create a kid profile to personalize LINVO.</p>
+
+        <label class="modal-label">
+          Kid's name
+          <input type="text" id="kid-name-input" placeholder="Alex" />
+        </label>
+
+        <div class="modal-actions">
+          <button type="button" class="modal-btn modal-btn-secondary" data-close-kid>
+            Cancel
+          </button>
+          <button type="button" class="modal-btn modal-btn-primary" id="save-kid-btn">
+            Save
+          </button>
+        </div>
+
+        <p class="modal-error" id="kid-modal-error" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <!-- Add channel modal -->
+    <div class="modal-overlay modal-hidden" id="add-channel-modal" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="add-channel-title">
+        <h2 id="add-channel-title">Add approved channel</h2>
+        <p class="modal-subtitle">
+          Paste a YouTube channel URL or channel ID. LINVO will import videos from this channel only.
+        </p>
+
+        <label class="modal-label">
+          Assign to kid
+          <select id="channel-kid-select"></select>
+        </label>
+
+        <label class="modal-label">
+          Channel URL or ID
+          <input
+            type="text"
+            id="channel-input"
+            placeholder="https://www.youtube.com/@teded"
+          />
+        </label>
+
+        <div class="modal-actions">
+          <button type="button" class="modal-btn modal-btn-secondary" data-close-channel>
+            Cancel
+          </button>
+          <button type="button" class="modal-btn modal-btn-primary" id="save-channel-btn">
+            Save & import videos
+          </button>
+        </div>
+
+        <p class="modal-error" id="channel-modal-error" aria-live="polite"></p>
+        <p class="modal-hint">
+          For now, LINVO will import the newest videos from this channel and show them in your kid’s “Videos You May Like”.
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </div>
+</body>
+</html>
